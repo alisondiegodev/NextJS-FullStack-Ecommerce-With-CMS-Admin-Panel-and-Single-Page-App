@@ -7,7 +7,7 @@ export default async function DashboardLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { params: { storeId: string } };
+  params: { storeId: string };
 }) {
   const userId = auth();
 
@@ -16,7 +16,6 @@ export default async function DashboardLayout({
   const store = await prismadb.store.findFirst({
     where: {
       id: params.storeId,
-      userId,
     },
   });
 
@@ -25,6 +24,7 @@ export default async function DashboardLayout({
   return (
     <>
       <div>This will be a nav bar</div>
+      {children}
     </>
   );
 }
